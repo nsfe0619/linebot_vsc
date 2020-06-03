@@ -3,6 +3,60 @@ var request = require("request");
 
 module.exports = async function App(context) {
   await context.sendText(context.event.text);
+  if ((context.event.type = "text")) {
+    if (context.event.text == "吼猴抽表特") {
+      getBeautyArr();
+      getImages(
+        beautyArr[parseInt(beautyArr.length * Math.random())],
+        function (img, url) {
+          if (img) {
+            var imagesBack = [
+              {
+                type: "image",
+                originalContentUrl: "https://" + img + ".jpg",
+                previewImageUrl: "https://" + img + ".jpg",
+              },
+              {
+                type: "text",
+                text: "https://www.ptt.cc" + url,
+              },
+            ];
+            event
+              .reply(imagesBack)
+              .then(function (data) {
+                // success
+                console.log(imagesBack);
+              })
+              .catch(function (error) {
+                // error
+                console.log("error");
+              });
+          } else {
+            var msg = [
+              {
+                type: "text",
+                text: "沒抽到妹子QQ 請重抽",
+              },
+              {
+                type: "text",
+                text: "https://www.ptt.cc" + url,
+              },
+            ];
+            event
+              .reply(msg)
+              .then(function (data) {
+                // success
+                console.log(msg);
+              })
+              .catch(function (error) {
+                // error
+                console.log("error");
+              });
+          }
+        }
+      );
+    }
+  }
 };
 //抽表特start
 var beautyArr = [];
