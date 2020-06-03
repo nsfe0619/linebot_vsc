@@ -11,11 +11,13 @@ module.exports = async function App(context) {
           url
         ) {
           if (img) {
+            var imgArr = img.split("/");
+            console.log("imgArr", imgArr);
             var imagesBack = [
               {
                 type: "image",
                 originalContentUrl: "https://" + img + ".jpg",
-                previewImageUrl: "https://" + img + ".jpg",
+                previewImageUrl: "https://i.imgur.com/" + imgArr[1] + ".jpg",
               },
               {
                 type: "text",
