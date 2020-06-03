@@ -12,7 +12,7 @@ module.exports = async function App(context) {
         ) {
           if (img) {
             var imgArr = img.split("/");
-            console.log("imgArr", imgArr);
+            // console.log("imgArr", imgArr);
             var imagesBack = [
               {
                 type: "image",
@@ -28,11 +28,11 @@ module.exports = async function App(context) {
               .reply(imagesBack)
               .then(function (data) {
                 // success
-                console.log(imagesBack);
+                // console.log(imagesBack);
               })
               .catch(function (error) {
                 // error
-                console.log("error");
+                // console.log("error");
               });
           } else {
             var msg = [
@@ -49,11 +49,11 @@ module.exports = async function App(context) {
               .reply(msg)
               .then(function (data) {
                 // success
-                console.log(msg);
+                // console.log(msg);
               })
               .catch(function (error) {
                 // error
-                console.log("error");
+                // console.log("error");
               });
           }
         });
@@ -78,7 +78,6 @@ function getBeautyArr(callback) {
       $(".r-ent .title a").each(function (i, elem) {
         beautyArr.push($(".r-ent .title a").eq(i).attr("href"));
       });
-      callback(beautyArr);
     }
   );
 }
@@ -90,7 +89,6 @@ function getImages(post, callback) {
       headers: { Cookie: "over18=1" },
     },
     function (error, response, body) {
-      var imgArr = [];
       if (body) {
         var images = body.match(/imgur.com\/[0-9a-zA-Z]{7}/g);
         var randomImgArr = images;
