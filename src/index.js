@@ -2,13 +2,14 @@ var cheerio = require("cheerio");
 var request = require("request");
 
 module.exports = async function App(context) {
-  await context.sendText(context.event.text);
+  // await context.sendText(context.event.text);
   if ((context.event.type = "text")) {
     if (context.event.text == "吼猴抽表特") {
-      getBeautyArr();
-      getImages(
-        beautyArr[parseInt(beautyArr.length * Math.random())],
-        function (img, url) {
+      getBeautyArr(function (tmpArr) {
+        getImages(tmpArr[parseInt(tmpArr.length * Math.random())], function (
+          img,
+          url
+        ) {
           if (img) {
             var imagesBack = [
               {
@@ -21,7 +22,7 @@ module.exports = async function App(context) {
                 text: "https://www.ptt.cc" + url,
               },
             ];
-            event
+            context
               .reply(imagesBack)
               .then(function (data) {
                 // success
@@ -42,7 +43,7 @@ module.exports = async function App(context) {
                 text: "https://www.ptt.cc" + url,
               },
             ];
-            event
+            context
               .reply(msg)
               .then(function (data) {
                 // success
@@ -53,44 +54,56 @@ module.exports = async function App(context) {
                 console.log("error");
               });
           }
-        }
-      );
+        });
+      });
     }
   }
 };
 //抽表特start
 var beautyArr = [];
-function getBeautyArr() {
-  request(
+function getBeautyArr(callback) {
+  var url =
     "https://www.ptt.cc/bbs/Beauty/index" +
-      parseInt(1135 * Math.random() + 1300) +
-      ".html",
+    parseInt(1754 * Math.random() + 1300) +
+    ".html";
+  request.post(
+    {
+      url: url,
+      headers: { Cookie: "over18=1" },
+    },
     function (error, response, body) {
       var $ = cheerio.load(body);
       $(".r-ent .title a").each(function (i, elem) {
         beautyArr.push($(".r-ent .title a").eq(i).attr("href"));
       });
+      callback(beautyArr);
     }
   );
 }
 
 function getImages(post, callback) {
-  request("https://www.ptt.cc" + post, (err, res, body) => {
-    var imgArr = [];
-    if (body) {
-      var images = body.match(/imgur.com\/[0-9a-zA-Z]{7}/g);
-      var randomImgArr = images;
-      if (randomImgArr) {
-        var tmpRandomImg =
-          randomImgArr[parseInt(randomImgArr.length * Math.random())];
+  request.post(
+    {
+      url: "https://www.ptt.cc" + post,
+      headers: { Cookie: "over18=1" },
+    },
+    function (error, response, body) {
+      var imgArr = [];
+      if (body) {
+        var images = body.match(/imgur.com\/[0-9a-zA-Z]{7}/g);
+        var randomImgArr = images;
+        if (randomImgArr) {
+          var tmpRandomImg =
+            randomImgArr[parseInt(randomImgArr.length * Math.random())];
 
-        callback(tmpRandomImg, post);
+          callback(tmpRandomImg, post);
+        } else {
+          callback(false, post);
+        }
       } else {
         callback(false, post);
       }
-    } else {
-      callback(false, post);
     }
-  });
+  );
 }
 //抽表特end
