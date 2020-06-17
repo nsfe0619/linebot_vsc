@@ -42,7 +42,7 @@ module.exports = async function App(context) {
     if (context.event.text.indexOf("運勢") > -1) {
       divination.divination(context);
     }
-    if (context.event.text == "吼猴抽表特") {
+    if (context.event.text == "看妹子") {
       findBeauty.findBeauty(context);
     }
   }
