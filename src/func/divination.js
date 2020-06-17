@@ -2,6 +2,7 @@ module.exports.divination = divination;
 
 function divination(context) {
   let dNum = getRandom(12);
+  context.sendText(dNum);
   switch (dNum) {
     case 0:
       context.sendText("大吉");
