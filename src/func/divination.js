@@ -20,7 +20,7 @@ function divination(context) {
       context.sendText("半吉。祝福你！(*ˇωˇ*人)");
       break;
     case 6:
-      context.sendText("末吉。不錯呢！(,,・ω・,,");
+      context.sendText("末吉。不錯呢！(,,・ω・,,)");
       break;
     case 7:
       context.sendText("末小吉。/r/n 勉勉強強啦！(*´∀`)");
