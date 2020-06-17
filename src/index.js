@@ -39,7 +39,7 @@ module.exports = async function App(context) {
   context.sendText(context.session.user.id);
   context.sendText(context.session.user.name);
   if ((context.event.type = "text")) {
-    if (context.event.text.indexOf("運勢")) {
+    if (context.event.text.indexOf("運勢") > -1) {
       divination.divination(context);
     }
     if (context.event.text == "吼猴抽表特") {
