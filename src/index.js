@@ -36,8 +36,8 @@ module.exports = async function App(context) {
   });
   // console.log("context", context.session.user);
   //context.sendText('');
-  context.sendText(context.session.user.id);
-  context.sendText(context.session.user.name);
+  // context.sendText(context.session.user.id);
+  // context.sendText(context.session.user.name);
   if ((context.event.type = "text")) {
     if (context.event.text.indexOf("運勢") > -1) {
       divination.divination(context);
