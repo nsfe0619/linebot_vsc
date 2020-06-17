@@ -1,4 +1,5 @@
 var findBeauty = require("./func/findBeauty");
+var divination = require("./func/divination");
 // require nodeJS 內建 File System 模組.
 var fs = require("fs");
 // google-spreadsheet modules 宣告
@@ -38,6 +39,9 @@ module.exports = async function App(context) {
   context.sendText(context.session.user.id);
   context.sendText(context.session.user.name);
   if ((context.event.type = "text")) {
+    if (context.event.text.indexOf("運勢")) {
+      divination.divination(context);
+    }
     if (context.event.text == "吼猴抽表特") {
       findBeauty.findBeauty(context);
     }
