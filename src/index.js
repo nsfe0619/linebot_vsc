@@ -1,5 +1,6 @@
 var findBeauty = require("./func/findBeauty");
 var divination = require("./func/divination");
+var features = require("./setting/features");
 // require nodeJS 內建 File System 模組.
 var fs = require("fs");
 // google-spreadsheet modules 宣告
@@ -36,14 +37,20 @@ module.exports = async function App(context) {
   });
   // console.log("context", context.session.user);
   // context.sendText('');
-  // context.sendText(context.session.user.id);
-  // context.sendText(context.session.user.name);
   if ((context.event.type = "text")) {
-    if (context.event.text.indexOf("運勢") > -1) {
-      divination.divination(context);
-    }
-    if (context.event.text == "看妹子") {
-      findBeauty.findBeauty(context);
-    }
+    features.array.forEach((element) => {
+      context.sendText("type:" + element.type);
+      if (element.type == "equal") {
+        if (context.event.text == element.keyword) {
+          element.function();
+        }
+      }
+    });
+    // if (context.event.text.indexOf("運勢") > -1) {
+    //   divination.divination(context);
+    // }
+    // if (context.event.text == "看妹子") {
+    //   findBeauty.findBeauty(context);
+    // }
   }
 };
