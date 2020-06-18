@@ -7,12 +7,16 @@ function features(context) {
     {
       keyword: "看妹子",
       type: "equal",
-      function: findBeauty.findBeauty(context),
+      function: function (context) {
+        return findBeauty.findBeauty(context);
+      },
     },
     {
       keyword: "運勢",
       type: "indexOf",
-      function: divination.divination(context),
+      function: function (context) {
+        return divination.divination(context);
+      },
     },
   ];
 }
