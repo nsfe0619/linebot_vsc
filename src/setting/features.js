@@ -35,5 +35,5 @@ function queryFeatures(context) {
     message += element.keyword;
   });
 
-  context.sendText("我會做這些事情喔(.w. ) %0D%0A" + message);
+  context.sendText("我會做這些事情喔(.w. ) \n" + message);
 }
