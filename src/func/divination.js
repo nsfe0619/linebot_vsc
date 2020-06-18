@@ -23,10 +23,10 @@ function divination(context) {
       context.sendText("末吉。不錯呢！(,,・ω・,,)");
       break;
     case 7:
-      context.sendText("末小吉。/r/n 勉勉強強啦！(*´∀`)");
+      context.sendText("末小吉。勉勉強強啦！(*´∀`)");
       break;
     case 8:
-      context.sendText("凶。還不算太糟！(ﾟωﾟ");
+      context.sendText("凶。還不算太糟！(ﾟωﾟ )");
       break;
     case 9:
       context.sendText("小凶。運氣不是很好呢，怎麼辦？Σ(ﾟдﾟ)");
