@@ -5,7 +5,7 @@ module.exports.features = features;
 function features(context) {
   return [
     {
-      keyword: "找妹子",
+      keyword: "看妹子",
       type: "equal",
       function: findBeauty.findBeauty(context),
     },
