@@ -1,7 +1,7 @@
 var findBeauty = require("../func/findBeauty");
 module.exports.features = features;
 
-function features() {
+function features(context) {
   return [
     {
       keyword: "找妹子",
