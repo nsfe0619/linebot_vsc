@@ -38,7 +38,7 @@ module.exports = async function App(context) {
   // console.log("context", context.session.user);
   // context.sendText('');
   if ((context.event.type = "text")) {
-    features.array.forEach((element) => {
+    features.features().forEach((element) => {
       context.sendText("type:" + element.type);
       if (element.type == "equal") {
         if (context.event.text == element.keyword) {
