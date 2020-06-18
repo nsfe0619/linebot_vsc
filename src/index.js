@@ -1,3 +1,4 @@
+// var findBeauty = require("./func/findBeauty");
 var divination = require("./func/divination");
 var features = require("./setting/features");
 // require nodeJS 內建 File System 模組.

@@ -1,4 +1,4 @@
-var findBeauty = require("./func/findBeauty");
+var findBeauty = require("../func/findBeauty");
 module.exports.features = features;
 
 function features() {
