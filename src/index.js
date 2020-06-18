@@ -37,15 +37,15 @@ module.exports = async function App(context) {
   // console.log("context", context.session.user);
   // context.sendText('');
   if ((context.event.type = "text")) {
-    features.features(context).forEach((element) => {
+    features.features().forEach((element) => {
       context.sendText("type:" + element.type);
       if (element.type == "equal") {
         if (context.event.text == element.keyword) {
-          element.function();
+          element.function(context);
         }
       } else if (element.type == "indexOf") {
         if (context.event.text.indexOf(element.keyword) > -1) {
-          element.function();
+          element.function(context);
         }
       }
     });
