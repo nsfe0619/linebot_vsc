@@ -24,6 +24,7 @@ function find(context) {
             text: "https://www.ptt.cc" + url,
           },
         ];
+        console.log("imagesBack", imagesBack);
         context
           .reply(imagesBack)
           .then(function (data) {
