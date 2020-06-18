@@ -5,7 +5,7 @@ module.exports.features = features;
 function features() {
   return featuresArray;
 }
-let featuresArray = [
+const featuresArray = [
   {
     keyword: "你會做什麼",
     type: "equal",
@@ -29,7 +29,7 @@ let featuresArray = [
   },
 ];
 function queryFeatures(context) {
-  const message = "";
+  let message = "";
   featuresArray.forEach((element) => {
     message += message ? "、" : "";
     message += element.keyword;
