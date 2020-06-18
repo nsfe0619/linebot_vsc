@@ -40,8 +40,11 @@ module.exports = async function App(context) {
     features.features(context).forEach((element) => {
       context.sendText("type:" + element.type);
       if (element.type == "equal") {
-        context.sendText("keyword:" + element.keyword);
         if (context.event.text == element.keyword) {
+          element.function();
+        }
+      } else if (element.type == "indexOf") {
+        if (context.event.text.indexOf(element.keyword) > -1) {
           element.function();
         }
       }
