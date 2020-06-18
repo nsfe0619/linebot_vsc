@@ -1,4 +1,5 @@
 var findBeauty = require("../func/findBeauty");
+var divination = require("../func/divination");
 module.exports.features = features;
 
 function features(context) {
