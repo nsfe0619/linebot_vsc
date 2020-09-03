@@ -22,6 +22,7 @@ module.exports = async function App(context) {
       console.log("err", err);
     }
     console.log("row_data", row_data); //每列資料
+    console.log("row_data", row_data.key); //每列資料
     // console.log(row_data.length); 	//資料總數
     // 在此處理你的資料
     // 儲存成 JSON
